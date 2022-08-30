@@ -4,39 +4,26 @@ import requests
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def home():
+  val = 0
+  req = requests.get('https://economia.awesomeapi.com.br/JSON/CAD-USD/7')
+  dict_rec = req.json()
+  c = dict_rec[0]['bid']
   print('home() was called')
-  return render_template('index.html')
-
-@app.route("/all")
-def getAll():
-  print('getAll() was called')
-  quote = requests.get('https://economia.awesomeapi.com.br/json/all')
-  quote_dict = quote.json()
-  return render_template('all.html', x=quote_dict)
-
-
-@app.route("/param", methods=['GET', 'POST'])
-def param():
-  print('param() was called')
-  
-  return render_template('param.html')
-
-
-@app.route("/params/filter", methods=['GET', 'POST'])
-def filter():
-  print('filter() was called')
-  # if request.method == 'POST':
-  #   formsData = request.form
-  #   de = formsData['de']
-  #   para = formsData['para']
-  #   quote = requests.get(f'http://economia.awesomeapi.com.br/json/last/{de}-{para}')
-  #   print(quote)
-  #   quote_dict = quote.json()
+  if request.method == 'POST':
+    data = request.form
+    a = data['in']
+    if a == '':
+      pass
+    elif a != '':
+      val = float(a)*float(c)
     
-  #   return render_template('filter.html', x=quote_dict)
-  return render_template('filter.html')
+    
+  
+  return render_template('index.html', x=dict_rec, val=val)
+
+
 
 if __name__ == '__main__':
   app.run(debug=True)

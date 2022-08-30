@@ -4,22 +4,92 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Awsome</title>
+  <title>Awesome</title>
 </head>
 <body>
-  <h1> Awsome API</h1> 
-  <!-- <nav>
-    <a href="{{url_for('getAll')}}">All</a>
-    <a href="{{ url_for('param')}}">param</a>
-  </nav> -->
-  
-  {% block body %}
-  {% endblock %}
-  
-  {% block body1 %}
-  {% endblock %}
+  <h1 style="text-align: center;"> Awesome API</h1> 
 
+  <div>
+    <h3>Raw data</h3>
+    <p>{{ x }}</p>
+  </div>
+  <br><br>
+  <hr>
+  
+  <form action="/" method="POST">
+    <h3>CAD to USD</h3>
+    <label for="in">CAD</label>
+    <input type="number" name="in" value="">
+    <button type="submit">Search</button>
+  </form>
+  <br>
+  {% if val != 0 %}
+  <div>{{ val }} USD</div>
+  {%endif%}
 
+  <br><br>
+  
+  
+  <p>1 day ago... {{ x[1]['bid'] }} </p>
+  <p>2 days ago... {{ x[2]['bid'] }} </p>
+  <p>3 days ago... {{ x[3]['bid'] }} </p>
+  <p>4 days ago... {{ x[4]['bid'] }} </p>
+  <p>5 days ago... {{ x[5]['bid'] }} </p>
+  <p>6 days ago... {{ x[6]['bid'] }} </p>
+ 
+  <hr>
+ 
+  <h3>Some Desing applied</h3>
+  <div style="text-align: center;"> 
+    <form action="/" method="POST">
+      <h3>CAD to USD</h3>
+      <label style="height: 34px;" for="in">CAD</label>
+      <input style="height: 34px;" type="number" name="in" value="">
+      <button style="height: 40px;" type="submit">Search</button>
+    </form>
+    <br>
+    {% if val != 0 %}
+    <div style="border: rgb(67, 86, 196) solid 1px; border-radius: 5px; width: 420px; height: 85px; margin-left: calc(50vw - 210px);">
+       <h4>USD $ {{ val }}</h4>
+       <div>
+
+       </div>
+    </div>
+    {%endif%}
+
+    <br>
+    <div style="display: flex; flex-direction: columns; gap: 15px; justify-content: center;">
+      <div style="border: rgb(16, 230, 112) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD $ {{ x[0]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">Today</p>
+      </div>
+      <div style="border: rgb(239, 239, 241) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD $ {{ x[1]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">1 day ago</p>
+      </div>
+      <div style="border: rgb(239, 239, 241) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD $ {{ x[2]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">2 days ago</p>
+      </div>
+      <div style="border: rgb(239, 239, 241) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD $ {{ x[3]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">3 days ago</p>
+      </div>
+      <div style="border: rgb(239, 239, 241) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD $ {{ x[4]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">4 days ago</p>
+      </div>
+      <div style="border: rgb(239, 239, 241) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD $ {{ x[5]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">5 days ago</p>
+      </div>
+      <div style="border: rgb(239, 239, 241) solid 1px; border-radius: 5px; width: 120px;">
+        <h4 style="text-align: center;">USD ${{ x[6]['bid'] }}</h4>
+        <p style="color: rgb(202, 193, 193); font-size: 13px; text-align: center; line-height: 0.2;">6 days ago</p>
+      </div>
+    </div>
+  </div>
+  <br><br>
 
 </body>
 </html>
